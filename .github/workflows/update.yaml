@@ -10,3 +10,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
       - run: go run .
+      - run: |
+          if ! git diff --quiet; then
+            echo "changes detected"
+          fi
