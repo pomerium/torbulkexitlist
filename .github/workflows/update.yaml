@@ -9,8 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
-      - run: go run .
       - run: |
-          if ! git diff --quiet; then
-            echo "changes detected"
+          go run .
+          git add .
+          if ! git diff --quiet ^HEAD; then
+            git commit -m 'update torbulkexitlist.json'
+            git push
           fi
