@@ -9,10 +9,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
-      - run: |
-          go run .
-          git add .
-          if ! git diff --quiet ^HEAD; then
-            git commit -m 'update torbulkexitlist.json'
-            git push
-          fi
+      - run: go run .
+      - uses: stefanzweifel/git-auto-commit-action@v4
