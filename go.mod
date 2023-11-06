@@ -1,3 +1,3 @@
 module github.com/pomerium/torbulkexitlist
 
-go 1.20
+go 1.21
