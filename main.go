@@ -93,7 +93,9 @@ func writeFile(w io.Writer, name string, ips []string) error {
 		for _, ip := range ips {
 			records = append(records, map[string]interface{}{"id": ip})
 		}
-		return json.NewEncoder(w).Encode(records)
+		e := json.NewEncoder(w)
+		e.SetIndent("", "  ")
+		return e.Encode(records)
 	default:
 		return fmt.Errorf("unsupported file extension: %s", ext)
 	}
