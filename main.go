@@ -89,9 +89,9 @@ func writeFile(w io.Writer, name string, ips []string) error {
 		cw.Flush()
 		return cw.Error()
 	case ".json":
-		var records []interface{}
+		var records []any
 		for _, ip := range ips {
-			records = append(records, map[string]interface{}{"id": ip})
+			records = append(records, map[string]any{"id": ip})
 		}
 		e := json.NewEncoder(w)
 		e.SetIndent("", "  ")
